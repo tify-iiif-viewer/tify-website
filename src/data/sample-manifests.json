@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Historia Astronomiae",
+		"url": "https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest",
+		"source": "GDZ",
+		"website": "https://gdz.sub.uni-goettingen.de/id/PPN623133725"
+	},
+	{
+		"title": "David Copperfield",
+		"url": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_00000004216E/manifest.json",
+		"source": "British Library",
+		"website": "https://access.bl.uk/item/viewer/ark:/81055/vdc_00000004216E"
+	},
+	{
+		"title": "Gladiators of the Prize Ring",
+		"url": "https://digital.library.villanova.edu/Item/vudl:92879/Manifest",
+		"source": "Villanova Digital Library",
+		"website": "https://digital.library.villanova.edu/Item/vudl:92879"
+	},
+	{
+		"title": "The Natural Method of Healing",
+		"url": "https://iiif.wellcomecollection.org/presentation/v2/b20417081_001",
+		"source": "Wellcome Collection",
+		"website": "https://wellcomecollection.org/works/hcz4pz7m"
+	},
+	{
+		"title": "Papyrus of Dioscorus of Aphrodito",
+		"url": "https://adore.ugent.be/IIIF/manifests/archive.ugent.be%3A4B39C8CA-6FF9-11E1-8C42-C8A93B7C8C91",
+		"source": "Ghent University Library",
+		"website": "https://lib.ugent.be/en/catalog/rug01:001484515"
+	}
+]

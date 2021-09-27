@@ -1,0 +1,26 @@
+$beige: #f8f5f2;
+$blue: #06b;
+$charcoal: #202326;
+$white: #fff;
+
+$shade: #0003;
+$shade-weak: #0001;
+$shine: #fff2;
+
+$body-color: $charcoal;
+$border-color: $shade-weak;
+$link-color: $blue;
+$link-hover-bg: rgba($link-color, .1);
+$link-hover-color: mix(#000, $link-color, 20);
+
+$br: 2px; // border radius
+$font-size: 20px;
+$font-size-mobile: 16px;
+$font-size-small: .75em;
+
+$td: .2s; // transition duration
+
+$drop-shadow: 0 0 .5rem $shade;
+
+$large: '(min-width: 1080px)'; // for @media
+$dark: '(prefers-color-scheme: dark)'; // for @media
