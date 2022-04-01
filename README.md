@@ -18,3 +18,8 @@ Until TIFY v0.25.0 is released, the `tify` directory must be on the same file tr
 - Compile and hot-reload: `npm run serve`
 - Build for production: `npm run build`
 - Lint and fix files: `npm run lint`
+
+## Running with Docker
+
+Use `docker compose up --build -d` and open http://localhost:8866 in your
+browser.
