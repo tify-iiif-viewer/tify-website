@@ -42,7 +42,7 @@ ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
   li Highly configurable
   li Current state reflected in bookmarkable URL
 p.center
-  router-link.button(to="/examples") Usage examples
+  router-link.button(to="/examples/") Usage examples
 
 .highlight
   h2 Getting Started
@@ -57,7 +57,7 @@ p.center
       a.button.-outline(:href="githubUrl") GitHub Repository
   .col.-collapsed
     p
-      router-link.button.-outline(to="/examples") Usage examples
+      router-link.button.-outline(to="/examples/") Usage examples
 </template>
 
 <script>

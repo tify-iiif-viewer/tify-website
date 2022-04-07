@@ -22,9 +22,9 @@ module.exports = {
         staticDir: path.join(__dirname, 'dist'),
         routes: [
           '/',
-          '/examples/basic',
-          '/examples/multiple',
-          '/examples/api',
+          '/examples/basic/',
+          '/examples/multiple/',
+          '/examples/api/',
         ],
       }),
     ] : [],

@@ -16,19 +16,19 @@ const routes = [
     component: Home,
   },
   {
-    path: '/examples',
-    redirect: '/examples/basic',
+    path: '/examples/',
+    redirect: '/examples/basic/',
   },
   {
-    path: '/examples/api',
+    path: '/examples/api/',
     component: () => import('../views/ExampleApi.vue'),
   },
   {
-    path: '/examples/basic',
+    path: '/examples/basic/',
     component: () => import('../views/ExampleBasic.vue'),
   },
   {
-    path: '/examples/multiple',
+    path: '/examples/multiple/',
     component: () => import('../views/ExampleMultiple.vue'),
   },
   {

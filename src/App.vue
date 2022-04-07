@@ -51,9 +51,9 @@ export default {
     nav() {
       return {
         Home: '/',
-        'Basic Usage': '/examples/basic',
-        'Multiple Instances': '/examples/multiple',
-        API: '/examples/api',
+        'Basic Usage': '/examples/basic/',
+        'Multiple Instances': '/examples/multiple/',
+        API: '/examples/api/',
       }
     },
     githubUrl() {
