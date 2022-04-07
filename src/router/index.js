@@ -1,7 +1,6 @@
 import hljs from 'highlight.js/lib/core'
 import html from 'highlight.js/lib/languages/xml'
 import javascript from 'highlight.js/lib/languages/javascript'
-import 'highlight.js/styles/github-dark-dimmed.css'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'

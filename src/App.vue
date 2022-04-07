@@ -69,6 +69,8 @@ export default {
 @import '@/styles/fonts';
 @import '@/styles/elements';
 @import '@/styles/utils';
+
+@import '../node_modules/highlight.js/styles/github-dark-dimmed.css';
 </style>
 
 <style lang="scss" scoped>
