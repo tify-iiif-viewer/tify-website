@@ -1,36 +1,11 @@
-FROM alpine/git as git
-
-WORKDIR /app
-
-COPY . /app/website/
-
-RUN cd /app && \
-    git clone https://github.com/tify-iiif-viewer/tify && \
-    cd tify && \
-    git checkout next
-
-FROM node:12-alpine as tify
-
-WORKDIR /app
-
-COPY --from=git /app/ /app/
-
-RUN apk add git && \
-    mkdir -p /root/.cache/Cypress && \
-    chmod -R 777 /root/.cache && \
-    cd /app/tify && \
-    npm ci && \
-    npm run build --if-present && \
-    rm -rf node_modules
-
 FROM node:16-alpine as node
+
+WORKDIR /app
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-WORKDIR /app
-
-COPY --from=tify /app/ /app/
+COPY . /app/
 
 RUN set -x  && \
     apk update && \
@@ -54,11 +29,11 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser && \
 USER pptruser
 
 RUN npm install -g npm
-RUN cd /app/website && \
+RUN cd /app && \
     npm ci && \
     npm run build && \
     rm -rf node_modules
 
 FROM caddy:2-alpine
 
-COPY --from=node /app/website/dist/ /usr/share/caddy/
+COPY --from=node /app/dist/ /usr/share/caddy/

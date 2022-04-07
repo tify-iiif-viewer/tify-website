@@ -13,7 +13,7 @@
     "highlight.js": "^11.4.0",
     "marked": "^4.0.12",
     "reset-css": "^5.0.1",
-    "tify": "file:../tify",
+    "tify": "^0.25.1",
     "vue": "^3.2.29",
     "vue-router": "^4.0.12"
   },
