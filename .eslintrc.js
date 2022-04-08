@@ -7,6 +7,9 @@ module.exports = {
     'plugin:vue/vue3-essential',
     '@vue/airbnb',
   ],
+  globals: {
+    Tify: true
+  },
   parserOptions: {
     parser: 'babel-eslint'
   },

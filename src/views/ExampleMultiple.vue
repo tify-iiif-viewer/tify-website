@@ -39,15 +39,15 @@ p
 export default {
   data() {
     return {
-      tifys: [],
+      tifyInstances: [],
     }
   },
   mounted() {
     const js = this.$refs.js.innerHTML
-    this.tifys = eval(`${js}\nnew Array(tify1, tify2)`) // eslint-disable-line no-eval
+    this.tifyInstances = eval(`${js}\nnew Array(tify1, tify2)`) // eslint-disable-line no-eval
   },
   beforeUnmount() {
-    this.tifys.forEach((tify) => tify.destroy())
+    this.tifyInstances.forEach((tify) => tify.destroy())
   },
 }
 </script>

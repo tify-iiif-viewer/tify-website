@@ -64,7 +64,7 @@ router.afterEach((to, from) => {
     }
 
     if (to.path !== from.path || !inited) {
-      hljs.highlightAll() // eslint-disable-line no-undef
+      hljs.highlightAll()
 
       // TODO: WORKAROUND: Why isn't scroll position reset on route change?
       if (!to.hash) {
