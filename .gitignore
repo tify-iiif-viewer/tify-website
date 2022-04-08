@@ -24,7 +24,7 @@ pnpm-debug.log*
 /*.sh
 
 # Dist files
-/dist
+**/dist
 
 # Copied from node_modules
 /public/tify-translations
