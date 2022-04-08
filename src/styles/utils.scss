@@ -18,7 +18,7 @@
       width: auto;
     }
 
-    @media #{$dark} {
+    .dark & {
       background: $body-color;
     }
 
@@ -52,7 +52,7 @@
     background: $link-hover-color;
     color: $white;
 
-    @media #{$dark} {
+    .dark & {
       filter: brightness(1.5);
     }
   }
@@ -66,7 +66,7 @@
     box-shadow: 0 0 0 2px inset;
     color: $link-color;
 
-    @media #{$dark} {
+    .dark & {
       color: invert($body-color);
     }
 
@@ -76,7 +76,7 @@
       background: rgba($link-hover-color, .1);
       color: $link-hover-color;
 
-      @media #{$dark} {
+      .dark & {
         background: rgba(invert($body-color), .1);
         color: invert($body-color);
       }
@@ -142,7 +142,7 @@
     padding: 1rem 1rem .5rem;
   }
 
-  @media #{$dark} {
+  .dark & {
     background: $body-color;
     color: invert($body-color);
   }
@@ -172,6 +172,16 @@
     background-size: 1rem;
     padding-left: 1rem;
     margin: 0;
+  }
+}
+
+.icon {
+  height: 24px;
+  vertical-align: top;
+  width: 24px;
+
+  path {
+    fill: currentColor;
   }
 }
 
@@ -243,7 +253,7 @@
   a {
     border: 0;
 
-    @media #{$dark} {
+    .dark & {
       filter: none;
     }
   }

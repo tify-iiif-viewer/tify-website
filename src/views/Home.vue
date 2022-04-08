@@ -161,7 +161,7 @@ export default {
         width: 4px;
         border-radius: 2px;
 
-        @media #{$dark} {
+        .dark & {
           filter: brightness(2);
         }
       }
