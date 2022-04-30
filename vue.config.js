@@ -1,5 +1,11 @@
-const path = require('path')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+function getGzippedSize(file) {
+  const { execSync } = require('child_process')
+  return parseInt(execSync(`gzip-size ${file}`), 10)
+}
+
+process.env.VUE_APP_TIFY_SIZE = getGzippedSize('node_modules/tify/dist/tify.js')
+  + getGzippedSize('node_modules/tify/dist/tify.css')
+process.env.VUE_APP_TIFY_VERSION = require('tify/package.json').version
 
 module.exports = {
   chainWebpack: (config) => {
@@ -18,8 +24,8 @@ module.exports = {
       }],
     },
     plugins: process.env.NODE_ENV === 'production' ? [
-      new PrerenderSPAPlugin({
-        staticDir: path.join(__dirname, 'dist'),
+      new (require('prerender-spa-plugin'))({
+        staticDir: require('path').join(__dirname, 'dist'),
         routes: [
           '/',
           '/examples/basic/',

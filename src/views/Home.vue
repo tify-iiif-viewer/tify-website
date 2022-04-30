@@ -36,7 +36,7 @@ ul.block-list.sample-manifests
 
 h2 Features
 ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
-  li Lightweight – only 135&nbsp;KB (gzipped)
+  li Lightweight – only {{size}}&nbsp;KB (gzipped)
   li Fast – also with very large manifests
   li Fully responsive and accessible
   li Highly configurable
@@ -101,6 +101,9 @@ export default {
       )
 
       return html
+    },
+    size() {
+      return process.env.VUE_APP_TIFY_SIZE
     },
     version() {
       return process.env.VUE_APP_TIFY_VERSION
