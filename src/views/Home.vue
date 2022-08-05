@@ -70,7 +70,7 @@ const defaultManifestUrl = 'https://manifests.sub.uni-goettingen.de/iiif/present
 export default {
   data() {
     return {
-      manifestUrl: defaultManifestUrl,
+      manifestUrl: (new URLSearchParams(window.location.search)).get('manifest') || defaultManifestUrl,
       sampleManifests,
       tify: null,
     }
@@ -117,14 +117,29 @@ export default {
   },
   methods: {
     loadManifest(manifestUrl) {
-      this.manifestUrl = manifestUrl
+      const url = new URL(window.location)
 
-      // eslint-disable-next-line no-new, no-undef
+      if (this.tify) {
+        url.searchParams.delete('tify')
+        this.tify.destroy()
+      }
+
       this.tify = new Tify({
         container: '#tify',
-        manifestUrl: this.manifestUrl,
-        pages: this.manifestUrl === defaultManifestUrl ? [2, 3] : [1],
+        manifestUrl,
+        pages: manifestUrl === defaultManifestUrl ? [2, 3] : [1],
+        urlQueryKey: 'tify',
       })
+
+      if (manifestUrl !== defaultManifestUrl) {
+        url.searchParams.set('manifest', manifestUrl)
+      } else {
+        url.searchParams.delete('manifest')
+      }
+
+      window.history.pushState({}, '', url)
+
+      this.manifestUrl = manifestUrl
     },
   },
 }
