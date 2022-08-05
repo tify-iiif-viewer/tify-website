@@ -34,13 +34,13 @@ ul.block-list.sample-manifests
       p
         a.button.-outline(:href="githubUrl") GitHub Repository
 
-h2 Features
+h2 Core Features
 ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
   li Lightweight – only {{size}}&nbsp;KB (gzipped)
   li Fast – also with very large manifests
+  li Easy to embed and highly configurable
   li Fully responsive and accessible
-  li Highly configurable
-  li Current state reflected in bookmarkable URL
+  li State can be reflected in bookmarkable URL
 p.center
   router-link.button(to="/examples/") Usage examples
 
