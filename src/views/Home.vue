@@ -279,8 +279,4 @@ export default {
   font-weight: bold;
   padding: .25rem .5rem;
 }
-
-.tify a {
-  color: $link-color;
-}
 </style>
