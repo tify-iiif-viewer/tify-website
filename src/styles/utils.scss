@@ -1,37 +1,5 @@
-.block-list {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: $font-size-small;
-  list-style: none;
-  margin: -.125rem -.125rem (1rem - .125rem);
-  padding: 0;
-
-  > li {
-    background: $white;
-    border-radius: $br;
-    box-shadow: 0 0 0 1px $border-color;
-    margin: .125rem;
-    padding: 0 .25rem;
-    width: 100%;
-
-    @media (min-width: 32rem) {
-      width: auto;
-    }
-
-    .dark & {
-      background: $body-color;
-    }
-
-    > a {
-      display: inline-block;
-      border: 0;
-      padding: 0 .125rem;
-    }
-  }
-}
-
 .button {
-  background: $link-color;
+  background: $button-bg;
   border-radius: $br;
   color: $white;
   cursor: pointer;
@@ -49,16 +17,9 @@
   &:active,
   &:focus,
   &:hover {
-    background: $link-hover-color;
+    background: $button-hover-bg;
     color: $white;
-
-    .dark & {
-      filter: brightness(1.5);
-    }
-  }
-
-  &:focus-visible {
-    outline: .125rem solid $link-hover-bg;
+    transition-duration: 0s;
   }
 
   &.-outline {
@@ -66,19 +27,14 @@
     box-shadow: 0 0 0 2px inset;
     color: $link-color;
 
-    .dark & {
-      color: invert($body-color);
-    }
-
     &:active,
     &:focus,
     &:hover {
-      background: rgba($link-hover-color, .1);
+      background: $link-hover-bg;
       color: $link-hover-color;
 
       .dark & {
         background: rgba(invert($body-color), .1);
-        color: invert($body-color);
       }
     }
   }
@@ -117,7 +73,7 @@
   margin: 0 auto 1rem;
   max-height: 75vh;
   max-width: calc(100vw - 1rem);
-  min-height: 12rem;
+  min-height: 15.75rem; // space for TIFY's fully populated popup menu
   overflow: hidden;
   position: relative;
 
@@ -245,27 +201,6 @@
   padding: 0;
   position: absolute;
   width: 1px;
-}
-
-.tify {
-  font-family: roboto, sans-serif !important;
-
-  a {
-    border: 0;
-
-    .dark & {
-      filter: none;
-    }
-  }
-
-  label {
-    font-size: inherit;
-    font-weight: normal;
-  }
-
-  li {
-    margin: 0;
-  }
 }
 
 .wide {

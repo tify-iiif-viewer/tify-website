@@ -1,3 +1,9 @@
+* {
+  &:focus-visible {
+    outline: .125rem solid $blue-light;
+  }
+}
+
 html {
   font-size: 28px;
   -webkit-font-smoothing: antialiased;
@@ -30,19 +36,12 @@ a {
   text-decoration: none;
   transition: background $td, border $td, color $td, filter $td;
 
-  .dark & {
-    filter: brightness(1.5);
-  }
-
   &:focus,
   &:hover {
     background: $link-hover-bg;
     color: $link-hover-color;
     border-color: currentColor;
-
-    .dark & {
-      filter: brightness(2);
-    }
+    transition-duration: 0s;
   }
 }
 
@@ -85,10 +84,6 @@ h2 {
   text-align: center;
   font-size: 1rem;
   position: relative;
-
-  .dark & {
-    filter: brightness(1.5);
-  }
 
   &:not(:first-child) {
     margin-top: 1rem;
@@ -200,17 +195,18 @@ ul {
     background: $body-color;
     border-color: invert($shade);
     color: invert($body-color);
-    filter: brightness(1.5);
   }
 
   &:focus {
     border-color: $link-hover-color;
     box-shadow: 0 0 0 5px $link-hover-bg;
     outline: none;
+    transition-duration: 0s;
   }
 
   &:hover {
     border-color: $link-hover-color;
+    transition-duration: 0s;
   }
 
   &::selection {

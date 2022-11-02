@@ -116,7 +116,7 @@ h1 {
   text-align: center;
 
   &.-large {
-    padding: .5rem .5rem 2rem;
+    padding: .5rem .5rem 1rem;
 
     h1 {
       font: inherit;
@@ -174,7 +174,7 @@ h1 {
   }
 
   .header.-large + & > :first-child {
-    margin-top: -3rem;
+    margin-top: -2rem;
   }
 }
 
@@ -236,6 +236,11 @@ h1 {
         transition: opacity $td, transform ($td * .5);
       }
 
+      &:focus,
+      &:hover {
+        transition-duration: 0s;
+      }
+
       &.router-link-active {
         &::after {
           opacity: 1;
@@ -267,6 +272,7 @@ h1 {
   &:hover {
     background: $link-hover-bg;
     color: $link-hover-color;
+    transition-duration: 0s;
   }
 
   .dark & {

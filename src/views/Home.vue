@@ -11,22 +11,31 @@ p(style="margin-top: -.5rem")
       placeholder="IIIF Manifest URL"
     )
 
-h3.small(style="margin: 0") Sample Manifests
-ul.block-list.sample-manifests
+h3.small(style="margin: 0") Sample Documents
+ul.sample-manifests(ref="sampleManifests")
   li(v-for="sample in sampleManifests" :class="manifestUrl === sample.url ? 'current' : ''")
-    a(
+    a.sample-manifests-link(
       href="javascript:;"
-      @click="loadManifest(sample.url)"
+      @click="loadManifest(sample.url, sample.options || {})"
     )
-      b {{sample.title}}
-    span.separator /
-    a(:href="sample.website") {{sample.source}}
+      span.sample-manifests-title {{sample.title}}
+
+h2 Core Features
+ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
+  li Lightweight – only {{sizeKb}}&nbsp;kB (gzipped)
+  li Fast – also with very large manifests
+  li Easy to embed and highly configurable
+  li Fully responsive and accessible
+  li State can be reflected in bookmarkable&nbsp;URL
+p.center
+  router-link.button(to="/examples/") Usage examples
 
 .highlight
   h2 Get TIFY
-  p.center(style="margin-bottom: 1rem")
-    code(style="font-weight: bold") npm install tify
   .row.center
+    .col.-collapsed
+      p
+        code(style="font-weight: bold; display: inline-block; padding: .375rem 1rem") npm install tify
     .col.-collapsed
       p
         a.button(:href="downloadUrl") Download TIFY {{version}}
@@ -34,19 +43,8 @@ ul.block-list.sample-manifests
       p
         a.button.-outline(:href="githubUrl") GitHub Repository
 
-h2 Core Features
-ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
-  li Lightweight – only {{size}}&nbsp;KB (gzipped)
-  li Fast – also with very large manifests
-  li Easy to embed and highly configurable
-  li Fully responsive and accessible
-  li State can be reflected in bookmarkable URL
-p.center
-  router-link.button(to="/examples/") Usage examples
-
-.highlight
-  h2 Getting Started
-  .readme(v-html="readme")
+h2 Getting Started
+.readme(v-html="readme")
 
 .row.center
   .col.-collapsed
@@ -57,7 +55,7 @@ p.center
       a.button.-outline(:href="githubUrl") GitHub Repository
   .col.-collapsed
     p
-      router-link.button.-outline(to="/examples/") Usage examples
+      router-link.button(to="/examples/") Usage examples
 </template>
 
 <script>
@@ -87,7 +85,9 @@ export default {
     },
     readme() {
       const markdown = readme
-        .replace(/.*?([\n ]##.*?)## Build Setup.*/is, '$1') // remove introduction and build setup
+        .replace(/<h1>.*?<\/h1>/s, '') // remove h1
+        .replace(/.*\(https:\/\/tify.rocks\/\).*/, '') // remove paragraph with website link
+        .replace(/(\s)## Build Setup.*/s) // remove build setup
         .replace(/(\s)#### /g, '$1##### ') // change h4 to h5
         .replace(/(\s)### /g, '$1#### ') // change h3 to h4
         .replace(/(\s)## /g, '$1### ') // change h2 to h3
@@ -102,21 +102,21 @@ export default {
 
       return html
     },
-    size() {
-      return process.env.VUE_APP_TIFY_SIZE
+    sizeKb() {
+      return Math.round(process.env.VUE_APP_TIFY_SIZE / 1000)
     },
     version() {
       return process.env.VUE_APP_TIFY_VERSION
     },
   },
   mounted() {
-    this.loadManifest(this.manifestUrl)
+    this.loadManifest(this.manifestUrl, this.manifestUrl === defaultManifestUrl ? { pages: [2, 3] } : {})
   },
   beforeUnmount() {
     this.tify.destroy()
   },
   methods: {
-    loadManifest(manifestUrl) {
+    loadManifest(manifestUrl, options = {}) {
       const url = new URL(window.location)
 
       if (this.tify) {
@@ -124,12 +124,13 @@ export default {
         this.tify.destroy()
       }
 
-      this.tify = new Tify({
+      const defaultOptions = {
         container: '#tify',
         manifestUrl,
-        pages: manifestUrl === defaultManifestUrl ? [2, 3] : [1],
         urlQueryKey: 'tify',
-      })
+      }
+
+      this.tify = new Tify({ ...defaultOptions, ...options })
 
       if (manifestUrl !== defaultManifestUrl) {
         url.searchParams.set('manifest', manifestUrl)
@@ -140,6 +141,11 @@ export default {
       window.history.pushState({}, '', url)
 
       this.manifestUrl = manifestUrl
+
+      this.$nextTick(() => {
+        // eslint-disable-next-line no-unused-expressions
+        this.$refs.sampleManifests.querySelector('.current')?.scrollIntoView(({ behavior: 'smooth', block: 'nearest', inline: 'center' }))
+      })
     },
   },
 }
@@ -160,6 +166,10 @@ export default {
 @import '@/styles/settings';
 
 .readme {
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
   // Options and API parameters
   > ul {
     list-style: none;
@@ -180,7 +190,7 @@ export default {
         border-radius: 2px;
 
         .dark & {
-          filter: brightness(2);
+          background: rgba(mix(#fff, $blue), .25);
         }
       }
     }
@@ -188,18 +198,77 @@ export default {
 }
 
 .sample-manifests {
-  .current {
-    background: $link-color;
-    color: $white;
+  display: flex;
+  font-size: $font-size-small;
+  list-style: none;
+  margin: -1px; // keep border visible
+  max-width: calc(100% + .25rem);
+  overflow: auto;
+  padding: 0;
+  scroll-snap-type: x proximity;
 
-    a {
-      color: inherit;
+  @media #{$small} {
+    flex-wrap: wrap;
+    margin: -.125rem -.125rem (1.5rem - .125rem);
+  }
 
-      &:focus,
-      &:hover {
-        background: $shine;
+  li {
+    background: $white;
+    border-radius: $br;
+    box-shadow: 0 0 0 1px $border-color;
+    flex: 1 0 auto;
+    margin: 1px; // keep border visible
+    scroll-snap-align: center;
+    // scroll-margin: 1px; // keep border visible
+
+    + li {
+      margin-left: .25rem;
+
+      @media #{$small} {
+        margin: .125rem;
       }
     }
+
+    @media #{$small} {
+      margin: .125rem;
+    }
+
+    .dark & {
+      background: $body-color;
+    }
+
+    &.current {
+      background: $button-bg;
+      color: $white;
+    }
   }
+}
+
+.sample-manifests-link {
+  align-items: center;
+  display: flex;
+  border: 0;
+  line-height: .5rem;
+
+  &:hover,
+  &:focus {
+    > img {
+      filter: none;
+      transition-duration: 0s;
+    }
+  }
+
+  .current > & {
+    color: inherit;
+  }
+}
+
+.sample-manifests-title {
+  font-weight: bold;
+  padding: .25rem .5rem;
+}
+
+.tify a {
+  color: $link-color;
 }
 </style>

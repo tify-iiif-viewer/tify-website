@@ -1,6 +1,6 @@
 function getGzippedSize(file) {
   const { execSync } = require('child_process')
-  return parseInt(execSync(`gzip-size ${file}`), 10)
+  return parseInt(execSync(`gzip-size --raw ${file}`), 10)
 }
 
 process.env.VUE_APP_TIFY_SIZE = getGzippedSize('node_modules/tify/dist/tify.js')
