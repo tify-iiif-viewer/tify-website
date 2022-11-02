@@ -1,32 +1,61 @@
 [
-	{
-		"title": "Historia Astronomiae",
-		"url": "https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest",
-		"source": "GDZ",
-		"website": "https://gdz.sub.uni-goettingen.de/id/PPN623133725"
-	},
-	{
-		"title": "David Copperfield",
-		"url": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_00000004216E/manifest.json",
-		"source": "British Library",
-		"website": "https://access.bl.uk/item/viewer/ark:/81055/vdc_00000004216E"
-	},
-	{
-		"title": "Gladiators of the Prize Ring",
-		"url": "https://digital.library.villanova.edu/Item/vudl:92879/Manifest",
-		"source": "Villanova Digital Library",
-		"website": "https://digital.library.villanova.edu/Item/vudl:92879"
-	},
-	{
-		"title": "The Natural Method of Healing",
-		"url": "https://iiif.wellcomecollection.org/presentation/v2/b20417081_001",
-		"source": "Wellcome Collection",
-		"website": "https://wellcomecollection.org/works/hcz4pz7m"
-	},
-	{
-		"title": "Papyrus of Dioscorus of Aphrodito",
-		"url": "https://adore.ugent.be/IIIF/manifests/archive.ugent.be%3A4B39C8CA-6FF9-11E1-8C42-C8A93B7C8C91",
-		"source": "Ghent University Library",
-		"website": "https://lib.ugent.be/en/catalog/rug01:001484515"
-	}
+  {
+    "titlePrefix": "Johann F. Weidler",
+    "title": "Historia Astronomiae",
+    "url": "https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest",
+    "source": "Göttingen Digitisation Centre",
+    "website": "https://gdz.sub.uni-goettingen.de/id/PPN623133725",
+    "options": { "pages": [2, 3] }
+  },
+  {
+    "titlePrefix": "Charles Dickens",
+    "title": "David Copperfield",
+    "url": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_00000004216E/manifest.json",
+    "source": "British Library",
+    "website": "https://access.bl.uk/item/viewer/ark:/81055/vdc_00000004216E",
+    "options": { "pageLabelFormat": "P", "pages": [6, 7] }
+  },
+  {
+    "title": "Papyrus of Dioscorus of Aphrodito",
+    "url": "https://adore.ugent.be/IIIF/manifests/archive.ugent.be%3A4B39C8CA-6FF9-11E1-8C42-C8A93B7C8C91",
+    "source": "Ghent University Library",
+    "website": "https://lib.ugent.be/en/catalog/rug01:001484515",
+    "options": { "pageLabelFormat": "L" }
+  },
+  {
+    "titlePrefix": "Journal Collection",
+    "title": "The Chemist and Druggist",
+    "url": "https://iiif.wellcomecollection.org/presentation/v2/b19974760",
+    "source": "Wellcome Collection",
+    "website": "https://wellcomecollection.org/works/aayk4bsm"
+  },
+  {
+    "title": "Speyerer Evangelistar",
+    "url": "https://digital.blb-karlsruhe.de/i3f/v20/1209510/manifest",
+    "source": "Baden State Library",
+    "website": "https://digital.blb-karlsruhe.de/urn/urn:nbn:de:bsz:31-38284",
+    "options": { "pageLabelFormat": "L" }
+  },
+  {
+    "titlePrefix": "Friedrich E. Bilz",
+    "title": "The Natural Method of Healing",
+    "url": "https://iiif.wellcomecollection.org/presentation/v2/b20417081",
+    "source": "Wellcome Collection",
+    "website": "https://wellcomecollection.org/works/hcz4pz7m"
+  },
+  {
+    "titlePrefix": "Charlotte Brontë",
+    "title": "Jane Eyre Vol. 1",
+    "url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb11256781/manifest",
+    "source": "Bavarian State Library",
+    "website": "https://www.digitale-sammlungen.de/en/view/bsb10745003",
+    "options": { "pages": [4, 5] }
+  },
+  {
+    "titlePrefix": "Vincent van Gogh",
+    "title": "Field with Poppies",
+    "url": "https://bremen.museum-digital.de/apis/iiif-presentation/147/manifest",
+    "source": "Kunsthalle Bremen",
+    "website": "https://bremen.museum-digital.de/index.php?t=objekt&oges=147"
+  }
 ]
