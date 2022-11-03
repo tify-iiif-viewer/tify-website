@@ -88,7 +88,7 @@ export default {
       const markdown = readme
         .replace(/<h1>.*?<\/h1>/s, '') // remove h1
         .replace(/.*\(https:\/\/tify.rocks\/\).*/, '') // remove paragraph with website link
-        .replace(/(\s)## Build Setup.*/s) // remove build setup
+        .replace(/(\s)## Build Setup.*/s, '') // remove build setup
         .replace(/(\s)#### /g, '$1##### ') // change h4 to h5
         .replace(/(\s)### /g, '$1#### ') // change h3 to h4
         .replace(/(\s)## /g, '$1### ') // change h2 to h3
