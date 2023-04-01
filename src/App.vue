@@ -170,7 +170,7 @@ h1 {
   padding: 1rem .5rem;
 
   .dark & {
-    background: mix(#fff, invert($beige), 5);
+    background: mix(#fff, invert($beige), 5%);
   }
 
   .header.-large + & > :first-child {

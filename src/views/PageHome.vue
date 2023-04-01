@@ -121,8 +121,8 @@ export default {
       const url = new URL(window.location)
 
       if (this.tify) {
-        url.searchParams.delete('tify')
         this.tify.destroy()
+        url.searchParams.delete('tify')
       }
 
       const defaultOptions = {
@@ -184,7 +184,7 @@ export default {
         content: '';
         display: block;
         left: -.5rem;
-        top: 4px;
+        top: 2px;
         bottom: 2px;
         position: absolute;
         width: 4px;
