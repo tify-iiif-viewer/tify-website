@@ -35,6 +35,7 @@ module.exports = {
       }),
     ] : [],
   },
+  transpileDependencies: ['tify'],
   productionSourceMap: false,
   pwa: {
     iconPaths: {
