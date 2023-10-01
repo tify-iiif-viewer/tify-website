@@ -12,9 +12,6 @@ module.exports = {
     config.module.rule('eslint')
       .use('eslint-loader')
       .options({ fix: true })
-
-    // Prevent linting of local node modules used for testing
-    config.resolve.symlinks(false)
   },
   configureWebpack: {
     module: {
