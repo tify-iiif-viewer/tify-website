@@ -29,10 +29,10 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser && \
 USER pptruser
 
 RUN npm install -g npm
-RUN cd /app && \
-    npm ci && \
-    npm run build && \
-    rm -rf node_modules
+RUN cd /app \
+    && npm ci \
+    && NODE_OPTIONS=--openssl-legacy-provider npm run build \
+    && rm -rf node_modules
 
 FROM caddy:2-alpine
 
