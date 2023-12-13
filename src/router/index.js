@@ -16,10 +16,6 @@ const routes = [
     component: Home,
   },
   {
-    path: '/examples/',
-    redirect: '/examples/basic/',
-  },
-  {
     path: '/examples/api/',
     component: () => import('../views/PageExampleApi.vue'),
   },

@@ -29,7 +29,9 @@ ul.arrow-list(style="margin: 0 auto 1rem; width: 14rem")
   li Fully responsive and accessible
   li State can be reflected in bookmarkable&nbsp;URL
 p.center
-  router-link.button(to="/examples/") Usage examples
+  //- NOTE: We would prefer to redirect from /examples/ to /examples/basic/,
+  //- but this does not work with prerendering.
+  router-link.button(to="/examples/basic/") Usage examples
 
 .highlight
   h2 Get TIFY
@@ -56,7 +58,7 @@ h2 Getting Started
       a.button.-outline(:href="githubUrl") GitHub Repository
   .col.-collapsed
     p
-      router-link.button(to="/examples/") Usage examples
+      router-link.button(to="/examples/basic/") Usage examples
 </template>
 
 <script>
