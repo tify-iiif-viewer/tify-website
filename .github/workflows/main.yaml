@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Log in to the Container registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ secrets.HARBOR_ENDPOINT }}
           username: ${{ secrets.HARBOR_USERNAME }}
@@ -27,7 +27,7 @@ jobs:
           images: ${{ secrets.HARBOR_ENDPOINT }}/sub/tify-website
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
