@@ -8,12 +8,10 @@
     "options": { "pages": [2, 3] }
   },
   {
-    "titlePrefix": "Charles Dickens",
-    "title": "David Copperfield",
-    "url": "https://api.bl.uk/metadata/iiif/ark:/81055/vdc_00000004216E/manifest.json",
-    "source": "British Library",
-    "website": "https://access.bl.uk/item/viewer/ark:/81055/vdc_00000004216E",
-    "options": { "pageLabelFormat": "P", "pages": [6, 7] }
+    "title": "Ragini Bhairavi",
+    "url": "https://manifests.collections.yale.edu/yuag/obj/38907",
+    "source": "Yale University Art Gallery",
+    "website": "https://www.yale.edu/collections"
   },
   {
     "title": "Papyrus of Dioscorus of Aphrodito",
