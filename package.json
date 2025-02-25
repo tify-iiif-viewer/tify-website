@@ -9,13 +9,13 @@
     "postinstall": "mkdir -p public/tify-translations; cp -f node_modules/tify/dist/translations/* public/tify-translations"
   },
   "dependencies": {
-    "core-js": "^3.37.0",
-    "highlight.js": "^11.9.0",
+    "core-js": "^3.40.0",
+    "highlight.js": "^11.11.1",
     "marked": "^4.3.0",
     "reset-css": "^5.0.2",
     "tify": "^0.32.0",
-    "vue": "^3.4.26",
-    "vue-router": "^4.3.2"
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.19",
@@ -23,17 +23,17 @@
     "@vue/cli-plugin-pwa": "~4.5.19",
     "@vue/cli-plugin-router": "~4.5.19",
     "@vue/cli-service": "~4.5.19",
-    "@vue/compiler-sfc": "^3.4.26",
+    "@vue/compiler-sfc": "^3.5.13",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-vue": "^9.25.0",
+    "eslint-plugin-vue": "^9.32.0",
     "gzip-size-cli": "^5.1.0",
     "prerender-spa-plugin": "^3.4.0",
-    "sass": "^1.76.0",
+    "sass": "^1.85.1",
     "sass-loader": "^10.5.2",
     "vue-cli-plugin-pug": "~2.0.0"
   }
