@@ -38,7 +38,7 @@ pre
     tify.resetScan(true)
 
 p
-    router-link(to="/#api") API documentation
+  a(:href="`https://github.com/tify-iiif-viewer/tify/blob/v${version}/doc/api.md`") API documentation
 </template>
 
 <script>
@@ -48,6 +48,7 @@ export default {
       tify: null,
       language: 'en',
       panel: 'info',
+      version: process.env.VUE_APP_TIFY_VERSION,
     }
   },
   mounted() {
