@@ -62,6 +62,25 @@ code {
   }
 }
 
+dl {
+  display: table;
+  margin: 0 0 .5rem;
+
+  > div {
+    display: table-row;
+  }
+}
+
+dt {
+  color: $body-color-muted;
+  display: table-cell;
+}
+
+dd {
+  display: table-cell;
+  padding-left: .5rem;
+}
+
 i,
 em {
   font-style: italic;
@@ -125,7 +144,6 @@ h3 {
 }
 
 h4 {
-  font-weight: bold;
   margin-bottom: .5rem;
 
   &:not(:first-child) {

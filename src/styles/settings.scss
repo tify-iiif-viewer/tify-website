@@ -22,6 +22,7 @@ $shine: #fff2;
 }
 
 $body-color: $charcoal;
+$body-color-muted: #{lighten($charcoal, 40)};
 $border-color: $shade-weak;
 $link-color: var(--link-color);
 $link-hover-bg: rgba($blue, .1);

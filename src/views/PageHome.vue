@@ -47,7 +47,24 @@ p.center
         a.button.-outline(:href="githubUrl") GitHub Repository
 
 h2 Getting Started
-.readme(v-html="readme")
+.readme(v-html="readmeHtml")
+
+h3#options Options
+.options(style="margin-bottom: 1.5rem")
+  ul.options-list
+    li.highlight.option(v-for="option in tifyOptions" :key="option.name")
+      .option-header
+        h4
+          code {{option.name}}
+      .option-body
+        dl
+          div
+            dt Type
+            dd(v-html="option.type")
+          div
+            dt Default
+            dd #[code {{option.defaultValue}}]
+        p.option-description(v-html="option.comment")
 
 .row.center
   .col.-collapsed
@@ -64,6 +81,7 @@ h2 Getting Started
 <script>
 import { marked } from 'marked'
 import readme from 'tify/README.md'
+import configText from '!raw-loader!tify/src/config' // eslint-disable-line import/no-webpack-loader-syntax
 import sampleManifests from '../data/sample-manifests.json'
 
 const defaultManifestUrl = 'https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest'
@@ -86,7 +104,7 @@ export default {
     readmeUrl() {
       return `${process.env.VUE_APP_GITHUB_URL}/blob/v${process.env.VUE_APP_TIFY_VERSION}/README.md`
     },
-    readme() {
+    readmeHtml() {
       const markdown = readme
         .replace(/<h1>.*?<\/h1>/s, '') // remove h1
         .replace(/.*\(https:\/\/tify.rocks\/\).*/, '') // remove paragraph with website link
@@ -94,6 +112,7 @@ export default {
         .replace(/(\s)#### /g, '$1##### ') // change h4 to h5
         .replace(/(\s)### /g, '$1#### ') // change h3 to h4
         .replace(/(\s)## /g, '$1### ') // change h2 to h3
+        .replace(/\[config.js\]\(.*?\)/g, '[options](#options)') // replace config link
 
       let html = marked(markdown)
 
@@ -107,6 +126,45 @@ export default {
     },
     sizeKb() {
       return Math.round(process.env.VUE_APP_TIFY_SIZE / 1000)
+    },
+    tifyOptions() {
+      const options = configText
+        .replace(/export default \{(.*)\};?/s, '$1')
+        .replace(/\t/g, '')
+        .replace(/^( \* ?)/gm, '')
+        .replace(/,\n\n/g, '')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .split('/**')
+        .slice(1)
+
+      return options
+        .map((string) => {
+          const parts = string.split('@type ')
+          const typeAndName = parts[1]?.split(/\n\/\n/)
+
+          const comment = parts[0]
+            .replace(/\n/g, ' ') // line breaks to spaces
+            .replace(/(https[^ ]+)/g, '<a href="$1">$1</a>') // make URLs clickable
+            .replace(/`(.*?)`/g, '<code>$1</code>') // add code markup
+
+          const type = typeAndName[0]
+            .replace(/{|}/g, '') // remove curly braces
+            .replace(/\|/, ' or ') // replace "|"" with "or"
+            .replace(/\?(.*)/, '$1 or <code>null</code>') // spell out "null"
+
+          const [name, defaultValue] = typeAndName[1]
+            .replace(/\n/g, ' ') // line breaks to spaces
+            .replace(/,( ])|,( })/, '$1$2') // remove trailing comma
+            .split(/: (.*)/s)
+
+          return {
+            comment,
+            type,
+            name,
+            defaultValue,
+          }
+        })
     },
     version() {
       return process.env.VUE_APP_TIFY_VERSION
@@ -168,35 +226,44 @@ export default {
 <style lang="scss">
 @import '@/styles/settings';
 
-.readme {
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
+.options-list {
+  list-style: none;
+  padding: 0;
+}
+
+.option {
+  margin: 0 0 .5rem !important;
+  padding: 0;
+
+  @media #{$small} {
+    display: flex;
+  }
+}
+
+.option-header {
+  background: radial-gradient($shade 20%, transparent 20%);
+  background-size: 3px 3px;
+  flex: 0 0 8rem;
+  line-height: .75rem;
+  padding: .5rem;
+
+  code {
+    background: none;
+    text-shadow: 0 0 1px $white, 0 0 2px $white;
   }
 
-  // Options and API parameters
-  > ul {
-    list-style: none;
-    padding-left: .5rem;
+  h4 {
+    margin: 0;
+  }
+}
 
-    > li {
-      position: relative;
+.option-body {
+  font-size: $font-size-small;
+  line-height: .75rem;
+  padding: .5rem;
 
-      &::before {
-        background: rgba($blue, .25);
-        content: '';
-        display: block;
-        left: -.5rem;
-        top: 2px;
-        bottom: 2px;
-        position: absolute;
-        width: 4px;
-        border-radius: 2px;
-
-        .dark & {
-          background: rgba(mix(#fff, $blue), .25);
-        }
-      }
-    }
+  > :last-child {
+    margin-bottom: 0;
   }
 }
 
