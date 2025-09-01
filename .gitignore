@@ -28,3 +28,4 @@ pnpm-debug.log*
 
 # Copied from node_modules
 /public/tify-translations
+docker-compose.*.yml
