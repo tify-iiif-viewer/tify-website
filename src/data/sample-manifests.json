@@ -1,5 +1,11 @@
 [
   {
+		"title": "IIIF Cookbook",
+		"url": "https://tify.rocks/manifests/iiif-cookbook-collection.json",
+		"source": "IIIF Community",
+    "website": "https://iiif.io/api/cookbook/"
+  },
+  {
     "titlePrefix": "Johann F. Weidler",
     "title": "Historia Astronomiae",
     "url": "https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest",
@@ -48,12 +54,5 @@
     "source": "Bavarian State Library",
     "website": "https://www.digitale-sammlungen.de/en/view/bsb10745003",
     "options": { "pages": [4, 5] }
-  },
-  {
-    "titlePrefix": "Vincent van Gogh",
-    "title": "Field with Poppies",
-    "url": "https://bremen.museum-digital.de/apis/iiif-presentation/147/manifest",
-    "source": "Kunsthalle Bremen",
-    "website": "https://bremen.museum-digital.de/index.php?t=objekt&oges=147"
   }
 ]

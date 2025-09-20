@@ -317,12 +317,10 @@ export default {
 .sample-manifests-image {
   border-radius: $br 0 0 $br;
   box-shadow: 1px 0 $border-color;
-  filter: sepia(.8) opacity(.8);
+  height: 1.5rem;
   margin: 0 -.3em 0 0;
   object-fit: cover;
-  height: 1.5rem;
   width: 1.5rem;
-  transition: filter $td;
 }
 
 .sample-manifests-link {
@@ -330,14 +328,6 @@ export default {
   display: flex;
   border: 0;
   line-height: .5rem;
-
-  &:hover,
-  &:focus {
-    > img {
-      filter: none;
-      transition-duration: 0s;
-    }
-  }
 
   .current > & {
     color: inherit;
