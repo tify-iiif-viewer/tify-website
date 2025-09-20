@@ -12,13 +12,23 @@ module.exports = {
     config.module.rule('eslint')
       .use('eslint-loader')
       .options({ fix: true })
+
+    // Ugly workaround to make tify.css work with WebPack 4
+    // Also see main.js and rules below
+    config.module.rule('css').exclude.add(/tify\.css$/);
   },
   configureWebpack: {
     module: {
-      rules: [{
-        test: /\.md$/,
-        loader: 'raw-loader',
-      }],
+      rules: [
+        {
+          test: /\.md$/,
+          loader: 'raw-loader',
+        },
+        {
+          test: /tify\.css$/,
+          loader: 'raw-loader',
+        }
+      ],
     },
     plugins: process.env.NODE_ENV === 'production' ? [
       new (require('prerender-spa-plugin'))({
