@@ -69,7 +69,7 @@
 
 .frame {
   border-radius: $br;
-  box-shadow: $drop-shadow, 0 0 0 1px #0003;
+  box-shadow: $drop-shadow, 0 0 0 1px $border-color;
   margin: 0 auto 1rem;
   max-height: 75vh;
   max-width: calc(100vw - 1rem);
@@ -79,6 +79,10 @@
 
   @media (orientation: portrait) {
     max-height: calc(100vw - 1rem + 48px); // 48px = TIFY header height
+  }
+
+  .dark & {
+    box-shadow: $drop-shadow, 0 0 0 1px #fff2;
   }
 
   &:not(:last-child) {

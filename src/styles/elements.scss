@@ -215,12 +215,6 @@ ul {
     color: invert($body-color);
   }
 
-  // Revert dark mode for TIFY frame until TIFY has a dark mode
-  .dark .tify & {
-    background: $white;
-    color: inherit;
-  }
-
   &:focus {
     border-color: $link-hover-color;
     box-shadow: 0 0 0 5px $link-hover-bg;

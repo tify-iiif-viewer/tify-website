@@ -348,4 +348,14 @@ export default {
   font-weight: bold;
   padding: .25rem .5rem;
 }
+
+.tify {
+  color-scheme: light;
+  font-size: 16px;
+  line-height: 1.5;
+
+  .dark & {
+    color-scheme: dark;
+  }
+}
 </style>
