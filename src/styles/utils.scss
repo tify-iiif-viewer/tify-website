@@ -14,6 +14,10 @@
   text-decoration: none;
   transition: background $td, color $td, filter $td;
 
+  &:disabled {
+    opacity: .5;
+  }
+
   &:active,
   &:focus,
   &:hover {

@@ -2,15 +2,23 @@
 h1 API
 
 p.button-group.center(v-if="tify")
-  button.button(@click="tify.setPage(3)") Show page 3
-  button.button(@click="tify.setPage([1, 8, 9])") Show pages 1, 8 and 9
-  button.button(@click="setLanguage(language === 'en' ? 'de' : 'en')") Change language to {{language === 'en' ? 'German' : 'English'}}
+  button.button(@click="tify.setPage(3)" :disabled="!ready")
+    | Show page 3
+  button.button(@click="tify.setPage([1, 8, 9])" :disabled="!ready")
+    | Show pages 1, 8 and 9
+  button.button(@click="setLanguage(language === 'en' ? 'de' : 'en')" :disabled="!ready")
+    | Change language to {{language === 'en' ? 'German' : 'English'}}
   br
-  button.button(@click="setView('thumbnails')") Show thumbnails
-  button.button(@click="setView('toc')") Show contents
-  button.button(@click="setView('')") Show scan only
-  button.button(@click="tify.viewer.viewport.zoomTo(2)") Zoom in
-  button.button(@click="tify.resetScan(true)") Reset scan
+  button.button(@click="setView('thumbnails')" :disabled="!ready")
+    | Show thumbnails
+  button.button(@click="setView('toc')" :disabled="!ready")
+    | Show contents
+  button.button(@click="setView('')" :disabled="!ready")
+    | Show scan only
+  button.button(@click="tify.viewer.viewport.zoomTo(2)" :disabled="!ready")
+    | Zoom in
+  button.button(@click="tify.resetImage(true)" :disabled="!ready")
+    | Reset image
 
 .wide
   .frame#tify
@@ -35,7 +43,7 @@ pre
     tify.setView('thumbnails')
 
     tify.viewer.viewport.zoomTo(2)
-    tify.resetScan(true)
+    tify.resetImage(true)
 
 p
   a(:href="`https://github.com/tify-iiif-viewer/tify/blob/v${version}/doc/api.md`") API documentation
@@ -48,12 +56,17 @@ export default {
       tify: null,
       language: 'en',
       panel: 'info',
+      ready: false,
       version: process.env.VUE_APP_TIFY_VERSION,
     }
   },
   mounted() {
     const js = this.$refs.js.innerHTML
     this.tify = eval(`${js}\ntify`) // eslint-disable-line no-eval
+
+    this.tify.ready.then(() => {
+      this.ready = true
+    })
   },
   beforeUnmount() {
     this.tify.destroy()
