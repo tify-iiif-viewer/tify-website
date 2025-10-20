@@ -9,13 +9,13 @@
     "postinstall": "mkdir -p public/tify-translations; cp -f node_modules/tify/dist/translations/* public/tify-translations"
   },
   "dependencies": {
-    "core-js": "^3.40.0",
+    "core-js": "^3.46.0",
     "highlight.js": "^11.11.1",
     "marked": "^4.3.0",
     "reset-css": "^5.0.2",
     "tify": "^0.34.3",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.4",
@@ -28,13 +28,13 @@
     "@vue/eslint-config-airbnb": "^8.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-vue": "^9.32.0",
+    "eslint-plugin-vue": "^9.33.0",
     "gzip-size-cli": "^5.1.0",
     "prerender-spa-plugin": "^3.4.0",
-    "sass": "^1.85.1",
+    "sass": "^1.93.2",
     "sass-loader": "^10.5.2",
     "vue-cli-plugin-pug": "~2.0.0"
   }
