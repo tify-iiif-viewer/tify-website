@@ -145,7 +145,7 @@ h1 {
 }
 
 .logo {
-  background: url('/img/tify-logo.svg') center no-repeat;
+  background: url('/public/img/tify-logo.svg') center no-repeat;
   background-size: contain;
   height: 2rem;
   width: 8rem;
@@ -155,7 +155,7 @@ h1 {
   }
 
   .dark & {
-    background-image: url('/img/tify-logo-white.svg');
+    background-image: url('/public/img/tify-logo-white.svg');
   }
 
   .header.-small & {

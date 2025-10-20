@@ -10,8 +10,10 @@ module.exports = {
   globals: {
     Tify: true
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false,
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

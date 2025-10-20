@@ -9,13 +9,14 @@ process.env.VUE_APP_TIFY_VERSION = require('tify/package.json').version
 
 module.exports = {
   chainWebpack: (config) => {
-    config.module.rule('eslint')
-      .use('eslint-loader')
-      .options({ fix: true })
+    config.plugin('eslint').use(require('eslint-webpack-plugin'), [{
+      fix: true,
+      extensions: ['js', 'vue'],
+    }]);
 
     // Ugly workaround to make tify.css work with WebPack 4
     // Also see main.js and rules below
-    config.module.rule('css').exclude.add(/tify\.css$/);
+    config.module.rule('css').exclude.add(/tify\.css$/)
   },
   configureWebpack: {
     module: {
