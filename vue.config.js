@@ -26,9 +26,9 @@ module.exports = {
           loader: 'raw-loader',
         },
         {
-          test: /tify\.css$/,
-          loader: 'raw-loader',
-        }
+          test: /tify(\.css|\/src\/config)/,
+          type: 'asset/source',
+        },
       ],
     },
     plugins: process.env.NODE_ENV === 'production' ? [

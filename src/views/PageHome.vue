@@ -81,7 +81,7 @@ h3#options Options
 <script>
 import { marked } from 'marked'
 import readme from 'tify/README.md'
-import configText from '!raw-loader!tify/src/config' // eslint-disable-line import/no-webpack-loader-syntax
+import configText from 'tify/src/config'
 import sampleManifests from '../data/sample-manifests.json'
 
 const defaultManifestUrl = 'https://manifests.sub.uni-goettingen.de/iiif/presentation/PPN623133725/manifest'
@@ -130,9 +130,9 @@ export default {
     tifyOptions() {
       const options = configText
         .replace(/export default \{(.*)\};?/s, '$1')
-        .replace(/\t/g, '')
-        .replace(/^( \* ?)/gm, '')
-        .replace(/,\n\n/g, '')
+        .replace(/^\s*/gm, '')
+        .replace(/^\* ?/gm, '')
+        .replace(/,\n/g, '')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .split('/**')
@@ -171,7 +171,12 @@ export default {
     },
   },
   mounted() {
-    this.loadManifest(this.manifestUrl, this.manifestUrl === defaultManifestUrl ? { pages: [2, 3] } : {})
+    this.loadManifest(
+      this.manifestUrl,
+      this.manifestUrl === defaultManifestUrl
+        ? { pages: [2, 3] }
+        : {},
+    )
   },
   beforeUnmount() {
     this.tify.destroy()
