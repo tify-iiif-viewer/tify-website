@@ -32,8 +32,7 @@ module.exports = {
       ],
     },
     plugins: process.env.NODE_ENV === 'production' ? [
-      new (require('prerender-spa-plugin'))({
-        staticDir: require('path').join(__dirname, 'dist'),
+      new (require('@prerenderer/webpack-plugin'))({
         routes: [
           '/',
           '/examples/basic/',
