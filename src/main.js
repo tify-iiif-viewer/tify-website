@@ -1,10 +1,8 @@
-// Import TIFY before the app so the latter can easily override its styles
-// import '../tify-symlink/tify'
-// import '../tify-symlink/tify.css'
-import 'tify'
+import { createApp } from 'vue'
+
+import Tify from 'tify'
 import tifyCss from 'tify/dist/tify.css'
 
-import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
@@ -13,5 +11,7 @@ import router from './router'
 const styleTag = document.createElement('style')
 styleTag.textContent = tifyCss
 document.head.prepend(styleTag)
+
+window.Tify = Tify
 
 createApp(App).use(router).mount('#app')
