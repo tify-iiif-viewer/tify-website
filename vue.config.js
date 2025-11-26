@@ -48,6 +48,7 @@ module.exports = {
     iconPaths: {
       favicon16: null,
       favicon32: null,
+      faviconSVG: 'img/tify-icon-16x16.svg',
     },
     manifestOptions: {
       background_color: '#fff',
