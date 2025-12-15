@@ -132,7 +132,6 @@ export default {
         .replace(/export default \{(.*)\};?/s, '$1')
         .replace(/^\s*/gm, '')
         .replace(/^\* ?/gm, '')
-        .replace(/,\n/g, '')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .split('/**')
@@ -154,8 +153,7 @@ export default {
             .replace(/\?(.*)/, '$1 or <code>null</code>') // spell out "null"
 
           const [name, defaultValue] = typeAndName[1]
-            .replace(/\n/g, ' ') // line breaks to spaces
-            .replace(/,( ])|,( })/, '$1$2') // remove trailing comma
+            .replace(/,\n/g, '') // remove trailing comma
             .split(/: (.*)/s)
 
           return {
@@ -246,15 +244,18 @@ export default {
 }
 
 .option-header {
-  background: radial-gradient($shade 20%, transparent 20%);
+  background-image: radial-gradient($shade 20%, transparent 20%);
   background-size: 3px 3px;
   flex: 0 0 8rem;
   line-height: .75rem;
   padding: .5rem;
 
+  .dark & {
+    background-image: radial-gradient($shine 20%, transparent 20%);
+  }
+
   code {
     background: none;
-    text-shadow: 0 0 1px $white, 0 0 2px $white;
   }
 
   h4 {
@@ -314,7 +315,7 @@ export default {
 
     &.current {
       background: $button-bg;
-      color: $white;
+      color: $button-color;
     }
   }
 }
