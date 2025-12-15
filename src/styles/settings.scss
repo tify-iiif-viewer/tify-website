@@ -4,30 +4,19 @@ $blue-light: mix(#fff, $blue);
 $charcoal: #202326;
 $white: #fff;
 
-$shade: #0003;
+$shade: #0002;
 $shade-weak: #0001;
-
-:root {
-  --link-color: #{$blue};
-  --link-hover-color: #{darken($blue, 5)};
-  --button-bg: #{$blue};
-  --button-hover-bg: #{darken($blue, 5)};
-}
-
-.dark {
-  --link-color: #{lighten($blue, 15)};
-  --link-hover-color: #{lighten($blue, 20)};
-  --button-hover-bg: #{lighten($blue, 5)};
-}
+$shine: #fff1;
 
 $body-color: $charcoal;
 $body-color-muted: #{lighten($charcoal, 40)};
 $border-color: $shade-weak;
-$link-color: var(--link-color);
+$link-color: light-dark($blue, lighten($blue, 15));
 $link-hover-bg: rgba($blue, .1);
-$link-hover-color: var(--link-hover-color);
-$button-bg: var(--button-bg);
-$button-hover-bg: var(--button-hover-bg);
+$link-hover-color: light-dark(darken($blue, 5), lighten($blue, 20));
+$button-bg: $link-color;
+$button-color: light-dark($white, $charcoal);
+$button-hover-bg: $link-hover-color;
 
 $br: 2px; // border radius
 $font-size: 20px;
@@ -40,4 +29,3 @@ $drop-shadow: 0 0 .5rem $shade;
 
 $small: '(min-width: 720px)'; // for @media
 $large: '(min-width: 1080px)'; // for @media
-$dark: '(prefers-color-scheme: dark)'; // for @media

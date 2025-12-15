@@ -1,7 +1,7 @@
 .button {
   background: $button-bg;
   border-radius: $br;
-  color: $white;
+  color: $button-color;
   cursor: pointer;
   display: inline-block;
   border: 0;
@@ -22,7 +22,7 @@
   &:focus,
   &:hover {
     background: $button-hover-bg;
-    color: $white;
+    color: $button-color;
     transition-duration: 0s;
   }
 
