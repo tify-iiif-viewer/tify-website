@@ -8,9 +8,9 @@ p.button-group.center(v-if="tify")
     | Show pages 1, 8 and 9
   button.button(@click="setLanguage(language === 'en' ? 'de' : 'en')" :disabled="!ready")
     | Change language to {{language === 'en' ? 'German' : 'English'}}
-  br
   button.button(@click="setView('thumbnails')" :disabled="!ready")
     | Show thumbnails
+  br
   button.button(@click="setView('toc')" :disabled="!ready")
     | Show contents
   button.button(@click="setView('')" :disabled="!ready")
@@ -19,6 +19,8 @@ p.button-group.center(v-if="tify")
     | Zoom in
   button.button(@click="tify.resetImage(true)" :disabled="!ready")
     | Reset image
+  button.button(@click="tify.toggleFullscreen()" :disabled="!ready")
+    | Enter fullscreen
 
 .wide
   .frame#tify
