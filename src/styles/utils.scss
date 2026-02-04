@@ -78,7 +78,6 @@
   max-height: 75vh;
   max-width: calc(100vw - 1rem);
   min-height: 15.75rem; // space for TIFY's fully populated popup menu
-  overflow: hidden;
   position: relative;
 
   @media (orientation: portrait) {
